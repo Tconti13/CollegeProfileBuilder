@@ -21,26 +21,31 @@ class DetailViewController: UIViewController {
 let realm = try! Realm()
     var detailItem: College? {
         didSet {
-            // Update the view.
             self.configureView()
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
     }
     func configureView() {
-        // Update the user interface for the detail item.
         if let college = self.detailItem {
                 if nameTextField != nil {
-                    locationTextField.text = college.name
-                    populationTextField.text = college.population
-                    collegeTextField.text = String(college.population)
+                    nameTextField.text = college.name
+                    locationTextField.text = college.location
+                    populationTextField.text = String(college.numberOfStudents)
                     collegeImageView.image = UIImage(data: college.image)
-
             }
         }
     }
-}
-
+    @IBAction func onTappedSubmit(_ sender: UIButton) {
+        if let college = self.detailItem {
+                try! realm.write ({
+                college.name = nameTextField.text!
+                college.location = locationTextField.text!
+                college.numberOfStudents = Int(populationTextField!)!
+                college.image = UIImagePNGRepresentation(collegeImageView.image)
+                })
+            }
+        }
+    }

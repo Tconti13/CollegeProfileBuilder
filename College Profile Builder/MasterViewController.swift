@@ -14,31 +14,58 @@ class MasterViewController: UITableViewController {
 
     dynamic var detailViewController: DetailViewController? = nil
     dynamic var objects = [Any]()
-    
     let realm = try! Realm()
-    lazy var cities: Results<College> = {
+    lazy var colleges: Results<College> = {
         self.realm.objects(College.self)
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        for college in colleges {
+            objects.append(college)
+        }
     }
-
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
     func insertNewObject(_ sender: Any) {
+        let alert = UIAlertController(title: "Add College", message: nil, prefferedStyle: .alert)
+        alert.addTextField { (textField) in textField.placeholder = "Name of College"
+        }
+        alert.addTextField { (textField) in textField.placeholder = "Location of College"
+        }
+        alert.addTextField { (textField) in textField.placeholder = "Enrollment Size"
+            textField.KeyboardType = UIKeyboardType.numberPad
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in
+        let nameTextField = alert.textFields![0] as UITextField
+        let locationTextField = alert.textFields![1] as UITextField
+        let populationTextField = alert.textFields![2] as UITextField
+            guard let image = UIImage(named: nameTextField.text!) else {
+                print("missing \(nameTextField.text!) image")
+                return
+            }
+            if let population = Int(populationTextField.text!) {
+                let college = College(name: nameTextField.text!, location: locationTextField.text!, population: populationTextField.text, image: UIImagePNGRepresentation(image)!)
+                self.objects.append(college)
+                try! self.realm.write {
+                    self.realm.add(college)
+                }
+                self.tableView.reloadData()
+            
+        }
+    }
         objects.insert(NSDate(), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
