@@ -38,13 +38,13 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
     func insertNewObject(_ sender: Any) {
-        let alert = UIAlertController(title: "Add College", message: nil, prefferedStyle: .alert)
+        let alert = UIAlertController(title: "Add College", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in textField.placeholder = "Name of College"
         }
         alert.addTextField { (textField) in textField.placeholder = "Location of College"
         }
         alert.addTextField { (textField) in textField.placeholder = "Enrollment Size"
-            textField.KeyboardType = UIKeyboardType.numberPad
+            textField.keyboardType = UIKeyboardType.numberPad
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -57,7 +57,7 @@ class MasterViewController: UITableViewController {
                 return
             }
             if let population = Int(populationTextField.text!) {
-                let college = College(name: nameTextField.text!, location: locationTextField.text!, population: populationTextField.text, image: UIImagePNGRepresentation(image)!)
+                let college = College(name: nameTextField.text!, location: locationTextField.text!, numberOfStudents: populationTextField.text!, image: UIImagePNGRepresentation(image)!)
                 self.objects.append(college)
                 try! self.realm.write {
                     self.realm.add(college)

@@ -44,7 +44,7 @@ let realm = try! Realm()
                 college.name = nameTextField.text!
                 college.location = locationTextField.text!
                 college.numberOfStudents = Int(populationTextField!)!
-                college.image = UIImagePNGRepresentation(collegeImageView.image)
+                college.image = UIImagePNGRepresentation(collegeImageView.image!)!
                 })
             }
         }
