@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SafariServices
+import UIKit
 import RealmSwift
 
 
@@ -21,7 +23,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup  after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
@@ -46,18 +48,22 @@ class MasterViewController: UITableViewController {
         alert.addTextField { (textField) in textField.placeholder = "Enrollment Size"
             textField.keyboardType = UIKeyboardType.numberPad
         }
+        alert.addTextField { (textField) in textField.placeholder = "Website URL"
+        
+    }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in
         let nameTextField = alert.textFields![0] as UITextField
         let locationTextField = alert.textFields![1] as UITextField
         let populationTextField = alert.textFields![2] as UITextField
+        let websiteTextField = alert.textFields![3] as UITextField
             guard let image = UIImage(named: nameTextField.text!) else {
                 print("missing \(nameTextField.text!) image")
                 return
             }
             if let population = Int(populationTextField.text!) {
-                let college = College(name: nameTextField.text!, location: locationTextField.text!, numberOfStudents: populationTextField.text!, image: UIImagePNGRepresentation(image)!)
+                let college = College(name: nameTextField.text!, location: locationTextField.text!, numberOfStudents: population, image: UIImagePNGRepresentation(image)!, website: websiteTextField.text!)
                 self.objects.append(college)
                 try! self.realm.write {
                     self.realm.add(college)
@@ -66,9 +72,8 @@ class MasterViewController: UITableViewController {
             
         }
     }
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        alert.addAction(insertAction)
+        present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Segues
@@ -99,7 +104,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let object = objects[indexPath.row] as! College
-        cell.textLabel!.text = object.description
+        cell.textLabel!.text = object.name
         return cell
     }
 
@@ -110,13 +115,14 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            let college = objects.remove(at: indexPath.row) as! College
+            try! self.realm.write {
+                self.realm.delete(college)
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
-
 }
 

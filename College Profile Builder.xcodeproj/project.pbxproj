@@ -13,12 +13,13 @@
 		3FC611B11E48E536009B8C8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FC611AF1E48E536009B8C8E /* Main.storyboard */; };
 		3FC611B31E48E536009B8C8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FC611B21E48E536009B8C8E /* Assets.xcassets */; };
 		3FC611B61E48E536009B8C8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FC611B41E48E536009B8C8E /* LaunchScreen.storyboard */; };
-		3FC611BE1E48E59C009B8C8E /* CollegeProfileBuilder1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC611BD1E48E59C009B8C8E /* CollegeProfileBuilder1.pdf */; };
 		3FC611C01E48E6B5009B8C8E /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC611BF1E48E6B5009B8C8E /* College.swift */; };
 		3FCE4D3F1E4CDCC10067A91B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCE4D3E1E4CDCC10067A91B /* Realm.framework */; };
 		3FCE4D401E4CDCC10067A91B /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCE4D3E1E4CDCC10067A91B /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FCE4D431E4CDCC90067A91B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCE4D421E4CDCC90067A91B /* RealmSwift.framework */; };
 		3FCE4D441E4CDCC90067A91B /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCE4D421E4CDCC90067A91B /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3FDDCCAA1E537005003A6CC3 /* CollegeProfileBuilder1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDCCA91E537005003A6CC3 /* CollegeProfileBuilder1.pdf */; };
+		3FF7628B1E5C9662005FDB4D /* CollegeProfileBuilder2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3FF7628A1E5C9662005FDB4D /* CollegeProfileBuilder2.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,10 +46,11 @@
 		3FC611B21E48E536009B8C8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FC611B51E48E536009B8C8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FC611B71E48E536009B8C8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FC611BD1E48E59C009B8C8E /* CollegeProfileBuilder1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = CollegeProfileBuilder1.pdf; path = ../../CollegeProfileBuilder1.pdf; sourceTree = "<group>"; };
 		3FC611BF1E48E6B5009B8C8E /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
 		3FCE4D3E1E4CDCC10067A91B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		3FCE4D421E4CDCC90067A91B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		3FDDCCA91E537005003A6CC3 /* CollegeProfileBuilder1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CollegeProfileBuilder1.pdf; sourceTree = "<group>"; };
+		3FF7628A1E5C9662005FDB4D /* CollegeProfileBuilder2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CollegeProfileBuilder2.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,8 @@
 				3FCE4D3E1E4CDCC10067A91B /* Realm.framework */,
 				3FC611A81E48E536009B8C8E /* College Profile Builder */,
 				3FC611A71E48E536009B8C8E /* Products */,
-				3FC611BD1E48E59C009B8C8E /* CollegeProfileBuilder1.pdf */,
+				3FDDCCA91E537005003A6CC3 /* CollegeProfileBuilder1.pdf */,
+				3FF7628A1E5C9662005FDB4D /* CollegeProfileBuilder2.pdf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,7 +164,8 @@
 			files = (
 				3FC611B61E48E536009B8C8E /* LaunchScreen.storyboard in Resources */,
 				3FC611B31E48E536009B8C8E /* Assets.xcassets in Resources */,
-				3FC611BE1E48E59C009B8C8E /* CollegeProfileBuilder1.pdf in Resources */,
+				3FF7628B1E5C9662005FDB4D /* CollegeProfileBuilder2.pdf in Resources */,
+				3FDDCCAA1E537005003A6CC3 /* CollegeProfileBuilder1.pdf in Resources */,
 				3FC611B11E48E536009B8C8E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
