@@ -51,7 +51,7 @@ let realm = try! Realm()
             }
         }
     }
-    @IBAction func onTappedSubmit(_ sender: UIButton) {
+    @IBAction func onTappedSave(_ sender: UIButton){
         if let college = self.detailItem {
                 try! realm.write ({
                 college.name = nameTextField.text!
