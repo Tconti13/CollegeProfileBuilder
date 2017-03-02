@@ -15,20 +15,20 @@ import RealmSwift
 class DetailViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var populationTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var collegeImageView: UIImageView!
     
-let realm = try! Realm()
+    let realm = try! Realm()
     var detailItem: College? {
         didSet {
             self.configureView()
         }
     }
-     var changeImage = UIImagePickerController()
+    var changeImage = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
@@ -42,26 +42,36 @@ let realm = try! Realm()
     }
     func configureView() {
         if let college = self.detailItem {
-                if nameTextField != nil {
-                    nameTextField.text = college.name
-                    locationTextField.text = college.location
-                    populationTextField.text = String(college.numberOfStudents)
-                    websiteTextField.text = String(college.website)
-                    collegeImageView.image = UIImage(data: college.image)
+            if nameTextField != nil {
+                nameTextField.text = college.name
+                locationTextField.text = college.location
+                populationTextField.text = String(college.numberOfStudents)
+                websiteTextField.text = String(college.website)
+                collegeImageView.image = UIImage(data: college.image)
             }
         }
     }
     @IBAction func onTappedSave(_ sender: UIButton){
         if let college = self.detailItem {
-                try! realm.write ({
+            try! realm.write ({
                 college.name = nameTextField.text!
                 college.location = locationTextField.text!
                 college.numberOfStudents = Int(populationTextField.text!)!
                 college.image = UIImagePNGRepresentation(collegeImageView.image!)!
                 college.website = String(websiteTextField.text!)!
-                })
-            }
+                nameTextField.resignFirstResponder()
+                locationTextField.resignFirstResponder()
+                populationTextField.resignFirstResponder()
+                websiteTextField.resignFirstResponder()
+            })
         }
+    }
+    @IBAction func onTappedOutsideTextFields(_ sender: UITapGestureRecognizer) {
+        nameTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        populationTextField.resignFirstResponder()
+        websiteTextField.resignFirstResponder()
+    }
     @IBAction func onTappedWebsiteLaunch(_ sender: UIButton) {
         let url = URL(string: websiteTextField.text!)!
         //url! <Exclamation mark was ommitted.
@@ -70,5 +80,5 @@ let realm = try! Realm()
     @IBAction func onTappedImageChange(_ sender: UIButton) {
         changeImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
         present(changeImage, animated: true, completion: nil)
-        }
+    }
 }

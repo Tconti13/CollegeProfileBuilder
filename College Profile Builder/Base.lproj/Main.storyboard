@@ -98,7 +98,9 @@
                                     <constraint firstAttribute="width" constant="30" id="H3L-22-p0G"/>
                                     <constraint firstAttribute="height" constant="30" id="IUi-PL-M9p"/>
                                 </constraints>
-                                <state key="normal" title="Go"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onTappedWebsiteLaunch:" destination="JEX-9P-axG" eventType="touchUpInside" id="bnE-pd-Qdw"/>
                                 </connections>
@@ -109,7 +111,9 @@
                                     <constraint firstAttribute="height" constant="35" id="NPp-Ge-QCb"/>
                                     <constraint firstAttribute="width" constant="115" id="Y7h-lz-xQ8"/>
                                 </constraints>
-                                <state key="normal" title="Change Image"/>
+                                <state key="normal" title="Change Image">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onTappedImageChange:" destination="JEX-9P-axG" eventType="touchUpInside" id="Uen-2G-g62"/>
                                 </connections>
@@ -120,13 +124,16 @@
                                     <constraint firstAttribute="width" constant="115" id="JzN-Ds-BfZ"/>
                                     <constraint firstAttribute="height" constant="35" id="stP-LW-Huq"/>
                                 </constraints>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onTappedSave:" destination="JEX-9P-axG" eventType="touchUpInside" id="r3I-Cp-mqj"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="RtL-9e-pQK" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="109" id="0jH-jS-3af"/>
                             <constraint firstItem="3CQ-wS-hjg" firstAttribute="top" secondItem="4Ms-XD-Rry" secondAttribute="bottom" constant="8" id="1SQ-MI-ICN"/>
@@ -158,9 +165,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="1Pw-qs-NLX" secondAttribute="trailing" constant="109" id="xYX-fq-j2X"/>
                             <constraint firstItem="K2X-mB-w8k" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="114" id="xcq-NX-ZAz"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xxv-JD-29F" appends="YES" id="84B-Qa-BwZ"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="College Details" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="collegeImageView" destination="4Ms-XD-Rry" id="2BC-Ni-nwf"/>
                         <outlet property="locationTextField" destination="eCG-qw-zTF" id="E7v-HC-mHs"/>
@@ -170,6 +180,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xxv-JD-29F">
+                    <connections>
+                        <action selector="onTappedOutsideTextFields:" destination="JEX-9P-axG" id="Xd9-rx-Zlq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="708" y="128.18590704647679"/>
         </scene>

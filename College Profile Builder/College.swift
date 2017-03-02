@@ -12,7 +12,7 @@ import UIKit
 import RealmSwift
 
 class College: Object {
-
+    
     dynamic var name = String()
     dynamic var location = String()
     dynamic var numberOfStudents = Int()
@@ -26,5 +26,5 @@ class College: Object {
         self.numberOfStudents = numberOfStudents
         self.image = image
         self.website = website
-}
+    }
 }
