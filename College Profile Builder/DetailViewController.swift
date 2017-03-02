@@ -40,6 +40,7 @@ UINavigationControllerDelegate {
             self.collegeImageView.image = selectedImage
         }
     }
+    
     func configureView() {
         if let college = self.detailItem {
             if nameTextField != nil {
